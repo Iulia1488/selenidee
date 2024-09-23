@@ -37,7 +37,10 @@ public class CardDeliveryTest {
         $("[data-test-id='phone'] input").setValue("+79123456789");
         $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id='notification']").shouldBe(text("Встреча забронирована на" + date), Duration.ofSeconds(15));
+        $("[data-test-id='notification'] .notification__title").shouldBe(text("Успешно!"),
+                Duration.ofSeconds(15));
+        $("[data-test-id='notification'] .notification__content").shouldBe(text("Встреча успешно забронирована на " + date),
+                Duration.ofSeconds(15));
 
     }
 
